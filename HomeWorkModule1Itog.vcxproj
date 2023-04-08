@@ -20,10 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LogPass.h" />
+    <ClInclude Include="RunLogPass.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LogPass.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RunLogPass.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
