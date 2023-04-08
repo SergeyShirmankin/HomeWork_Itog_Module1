@@ -23,11 +23,9 @@ int main()
 		std::cin >> choice;
 		countObject++;
 
-	} while (choice == 'y' && 'Y');
-	//Проверка логини пароля на ввод 
-	//если логин и пароль не верны то вызвать исключение на ввод нового 
-	//пароля и логина
-	
+	} while (choice == 'y' &&  maxPerson > countObject);//выходим из создания обьектов если дошли на границу массива
+
+	  for (int i = 0; i < countObject; ++i) { delete personsPtr[i]; }//освобрждаем память от обьектов
 	return 0;
 
 }
