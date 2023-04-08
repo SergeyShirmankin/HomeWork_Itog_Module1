@@ -1,6 +1,7 @@
 #include<iostream>
+#include "LogPass.h"
 int main()
 {
-	std::cout << "fuction main" << std::endl;
+	Log_pass test;
 	return 0;
 }
