@@ -4,5 +4,5 @@ const int maxPerson = 3;//максимальное количество людей которое можно работать в
 static int countObject;
 void createLogPass();
 void deleteLogPass();
-void enterLogPass();
+bool enterLogPass();
 void showLogPass();

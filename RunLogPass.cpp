@@ -32,7 +32,35 @@ void deleteLogPass()
 	std::cout << "deleteLogPass" << std::endl;
 }
 
-void enterLogPass()
+bool enterLogPass1()
 {
-	std::cout << "enterLogPass" << std::endl;
+	return false;
+}
+
+bool enterLogPass()
+{
+	bool resultCompare = false;
+	std::string _password;
+	std::string _login;
+	std::cout << "Enter login\n";
+	std::cout << ">>";
+	std::cin >> _login;
+	std::cout << "Enter password\n";
+	std::cout << ">>";
+	std::cin >> _password;
+	for (int i = 0; i < countObject; ++i)
+	{
+		int resultLog = _login.compare(personsPtr[i]->getLog());
+		int resultPass = _password.compare(personsPtr[i]->getPass());
+		if (resultLog == 0 && resultPass == 0) 
+		{
+			std::cout <<"Hello "<<personsPtr[i]->getLog() << "  >> ";
+			return true;
+		}
+		else
+		{
+			std::cout << "Not access = "<<i<<std::endl;
+			return false;
+		}
+	}
 }
