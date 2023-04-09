@@ -19,7 +19,10 @@ int main()
 			deleteLogPass();
 			break;
 		case'e':
-			enterLogPass();
+		if	(enterLogPass())
+		{
+			startSession();
+		}
 			break;
 		case's':
 			showLogPass();

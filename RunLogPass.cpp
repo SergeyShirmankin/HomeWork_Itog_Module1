@@ -27,6 +27,13 @@ void showLogPass()
 		std::cout << "personsPtr[i]->getPass()"[i] << ">> " << personsPtr[i]->getPass() << std::endl;
 	}
 }
+void startSession()
+{
+	std::string strinForTest;
+	std::cout << "Start Session["<< curSesion<<"]:\n";
+	std::cout << "Hello " << personsPtr[curSesion]->getLog() << "  >> ";
+	std::cin >> strinForTest;
+}
 void deleteLogPass()
 {
 	std::cout << "deleteLogPass" << std::endl;
@@ -54,7 +61,8 @@ bool enterLogPass()
 		int resultPass = _password.compare(personsPtr[i]->getPass());
 		if (resultLog == 0 && resultPass == 0) 
 		{
-			std::cout <<"Hello "<<personsPtr[i]->getLog() << "  >> ";
+			/*std::cout <<"Hello "<<personsPtr[i]->getLog() << "  >> \n";*/
+			curSesion = i;
 			return true;
 		}
 		else
