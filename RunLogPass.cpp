@@ -1,11 +1,9 @@
 #include<iostream>
 #include "LogPass.h"
 #include "RunLogPass.h"
+static Log_pass* personsPtr[maxPerson];//указатель на элементы массива
 void createLogPass()
 {
-	countObject = 0; // количество созданых обьектов или количество элементов в массиве
-	Log_pass* personsPtr[maxPerson];//указатель на элементы массива
-	char choice = 'n';//переменная для упраления цикла
 		try {
 			if (maxPerson < countObject)throw "\n massive out range"; //выбрасываем ислючение если массив 
 			personsPtr[countObject] = new Log_pass;  //вышел за границы 
@@ -14,10 +12,7 @@ void createLogPass()
 		{
 			std::cout << report;
 		}
-		std::cout << "If continue to press 'y' ";
-		std::cin >> choice;
 		countObject++;
-
 //	} while (choice == 'y' && maxPerson > countObject);//выходим из создания обьектов если дошли на границу массива
 
 //	for (int i = 0; i < countObject; ++i) { delete personsPtr[i]; }//освобрждаем память от обьектов
@@ -27,7 +22,7 @@ void showLogPass()
 {
 	for (int i = 0; i < countObject; ++i)
 	{
-		//std::cout<<"personsPtr"[i]<<">> "<< personsPt
+		std::cout << "personsPtr"[i] << ">> " << personsPtr[i] << std::endl;
 	}
 }
 void deleteLogPass()

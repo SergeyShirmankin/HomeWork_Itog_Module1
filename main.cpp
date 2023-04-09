@@ -2,9 +2,10 @@
 #include "RunLogPass.h"
 int main()
 {
+	countObject = 0; // количество созданых обьектов или количество элементов в массиве
 	char op;//запись символа операции
-	std::cout << "Press key:'q'-quit, 'n'-create log pass, 'd'-delete log pass, 'e'-enter log pass" << std::endl;
 	while (true) {
+		std::cout << "Press key:'q'-quit, 'n'-create , 'd'-delete , 'e'-enter , 's'- show\n";
 		std::cout << ">> ";
 		std::cin >> op;//
 		if (op == 'q') {
@@ -20,9 +21,11 @@ int main()
 		case'e':
 			enterLogPass();
 			break;
+		case's':
+			showLogPass();
+			break;
 		}
-		return 0;
 		//	for (int i = 0; i < countObject; ++i) { delete personsPtr[i]; }//освобрждаем память от обьектов
-
 	}
+	return 0;
 }

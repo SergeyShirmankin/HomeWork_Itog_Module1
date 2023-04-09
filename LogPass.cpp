@@ -20,3 +20,8 @@ std::string Log_pass::getPass()
 {
 	return password;
 }
+
+Log_pass* Log_pass::getPtrObject()
+{
+	return ptrObject;
+}
