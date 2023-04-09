@@ -23,6 +23,8 @@ void showLogPass()
 	for (int i = 0; i < countObject; ++i)
 	{
 		std::cout << "personsPtr"[i] << ">> " << personsPtr[i] << std::endl;
+		std::cout << "personsPtr[i]->getLog()"[i] << ">> " << personsPtr[i]->getLog() << std::endl;
+		std::cout << "personsPtr[i]->getPass()"[i] << ">> " << personsPtr[i]->getPass() << std::endl;
 	}
 }
 void deleteLogPass()
