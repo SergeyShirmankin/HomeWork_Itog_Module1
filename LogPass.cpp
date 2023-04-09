@@ -2,11 +2,20 @@
 
 Log_pass::Log_pass()
 {
-	std::cout << " Please enter new login: ";
+	std::cout << " Please enter new login: "<<std::endl;
+	std::cout << ">> ";
 	std::cin >> login;//¬водим новый логин
-	std::cout<<std::endl;
-	std::cout << "Please enter new pasword: ";
+	std::cout << "Please enter new pasword: "<<std::endl;
+	std::cout << ">> ";
 	std::cin >> password;
-	std::cout << std::endl;
+}
 
+std::string Log_pass::getLog()
+{	
+	return login;
+}
+
+std::string Log_pass::getPass()
+{
+	return password;
 }
