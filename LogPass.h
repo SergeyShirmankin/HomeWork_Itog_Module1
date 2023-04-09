@@ -7,6 +7,7 @@ public:
 	std::string getLog();//геттеры
 	std::string getPass();
 private:
+	Log_pass* ptrObject;// ”казатель на обьект
 	std::string login;//поле логина
 	std::string password;// поле парол€
 };

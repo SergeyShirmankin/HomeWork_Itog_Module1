@@ -1,6 +1,6 @@
 #include "LogPass.h"
 
-Log_pass::Log_pass()
+Log_pass::Log_pass()//конструктор по умолчанию
 {
 	std::cout << " Please enter new login: "<<std::endl;
 	std::cout << ">> ";
@@ -8,6 +8,7 @@ Log_pass::Log_pass()
 	std::cout << "Please enter new pasword: "<<std::endl;
 	std::cout << ">> ";
 	std::cin >> password;
+	this->ptrObject;//запоминаем адресс обьекта
 }
 
 std::string Log_pass::getLog()
