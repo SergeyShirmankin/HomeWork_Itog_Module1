@@ -1,9 +1,12 @@
 #include<iostream>
 #include "RunLogPass.h"
+#include "Messages.h"
 int main()
 {
 	countObject = 0; // количество созданых обьектов или количество элементов в массиве
+	countMessage = 0;//порядковый номер сообщения
 	char op;//запись символа операции
+	setlocale(LC_ALL, "");//кирилица
 	while (true) {
 		std::cout << "Press key:'q'-quit, 'n'-create , 'd'-delete , 'e'-enter , 's'- show\n";
 		std::cout << ">> ";

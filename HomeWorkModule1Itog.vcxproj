@@ -20,11 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LogPass.h" />
+    <ClInclude Include="Messages.h" />
     <ClInclude Include="RunLogPass.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LogPass.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Messages.cpp" />
     <ClCompile Include="RunLogPass.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
