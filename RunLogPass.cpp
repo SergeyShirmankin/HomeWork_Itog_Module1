@@ -1,11 +1,48 @@
 #include<iostream>
 #include "LogPass.h"
 #include "RunLogPass.h"
-static Log_pass* personsPtr[maxPerson];//указатель на элементы массива
+#include "Messages.h"
+#include <stdlib.h>
+static Log_pass* personsPtr[maxPerson];//указатель на элементы массива Пользователей
+static Messages* messagesPtr[maxMess];//указатель на элементы массива Сообщений
+
+									  
+void createNullMess()//Создаем массив пустых сообщений с номерами
+{
+for (int i = 0; i < maxMess; ++i) {
+		try {
+		if (maxMess < i)throw "\n massive messagesPtr  out range"; //создаем массив обьектов 
+		   messagesPtr[i] = new Messages;  //вышел за границы 
+		}
+
+		catch (const char* report)
+		{
+			std::cout << report;
+		}
+    }
+       showMessages(); 
+}
+
+void showMessages()
+{
+	std::string temp;
+	system("cls");
+		for (int i = 0; i < 10; ++i)
+		{
+			std::cout << "\n"[i]  << messagesPtr[i]<<"  ";
+			std::cout << messagesPtr[i]->getNumber();
+			std::cout << " " << messagesPtr[i]->getOwn()<<"->";
+			std::cout << " " << messagesPtr[i]->getReceiver();
+			std::cout << "\n" << messagesPtr[i]->getMessage()<<">>";	
+		}
+		std::cin >> temp;
+}
+
+
 void createLogPass()
 {
 		try {
-			if (maxPerson < countObject)throw "\n massive out range"; //выбрасываем ислючение если массив 
+			if (maxPerson < countObject)throw "\n personsPtr massive out range"; //выбрасываем ислючение если массив 
 			personsPtr[countObject] = new Log_pass;  //вышел за границы 
 		}
 		catch (const char* report)
@@ -32,6 +69,7 @@ void startSession()
 	std::string strinForTest;
 	std::cout << "Start Session["<< curSesion<<"]:\n";
 	std::cout << "Hello " << personsPtr[curSesion]->getLog() << "  >> ";
+
 	std::cin >> strinForTest;
 }
 void deleteLogPass()
