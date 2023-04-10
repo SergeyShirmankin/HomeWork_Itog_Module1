@@ -9,6 +9,9 @@ public:
 	std::string getReceiver();
 	std::string getMessage();
 	Messages* getPtrMess();
+	void setOwn(std::string);
+	void setReceiver(std::string);
+	void getMessage(std::string);
 private:
 	int number;//номер сообщения
 	std::string own;//владелец сообщения

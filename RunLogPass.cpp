@@ -29,11 +29,11 @@ void showMessages()
 	system("cls");
 		for (int i = 0; i < 10; ++i)
 		{
-			std::cout << "\n"[i]  << messagesPtr[i]<<"  ";
+			/*std::cout << "\n"[i]  << messagesPtr[i]<<" ";
 			std::cout << messagesPtr[i]->getNumber();
 			std::cout << " " << messagesPtr[i]->getOwn()<<"->";
 			std::cout << " " << messagesPtr[i]->getReceiver();
-			std::cout << "\n" << messagesPtr[i]->getMessage()<<">>";	
+			std::cout << "\n" << messagesPtr[i]->getMessage()<<">>"*/;	
 		}
 		std::cin >> temp;
 }

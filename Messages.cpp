@@ -33,3 +33,18 @@ Messages* Messages::getPtrMess()
 {
 	return this->ptrMess;
 }
+
+void Messages::setOwn(std::string  _own)
+{
+	this->own = _own;
+}
+
+void Messages::setReceiver(std::string _received)
+{
+	this->receiver = _received;
+}
+
+void Messages::getMessage(std::string _message)
+{
+	this->message = _message;
+}
