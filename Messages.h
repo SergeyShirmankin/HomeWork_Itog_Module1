@@ -11,7 +11,7 @@ public:
 	Messages* getPtrMess();
 	void setOwn(std::string);
 	void setReceiver(std::string);
-	void getMessage(std::string);
+	void setMessage(std::string);
 private:
 	int number;//номер сообщения
 	std::string own;//владелец сообщения

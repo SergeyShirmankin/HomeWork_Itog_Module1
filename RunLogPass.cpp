@@ -5,6 +5,7 @@
 #include <stdlib.h>
 static Log_pass* personsPtr[maxPerson];//указатель на элементы массива Пользователей
 static Messages* messagesPtr[maxMess];//указатель на элементы массива Сообщений
+const std::string Null = "Null";
 
 									  
 void createNullMess()//Создаем массив пустых сообщений с номерами
@@ -25,17 +26,31 @@ for (int i = 0; i < maxMess; ++i) {
 
 void showMessages()
 {
-	std::string temp;
+	int tempReceiver;
+	std::string tempMessage;
 	system("cls");
-		for (int i = 0; i < 10; ++i)
+	std::cout << "Online users >> ";
+	for (int i = 0; i < countObject; ++i)
+	{
+		std::cout << personsPtr[i]->getLog()<<"["<<i<<"], ";	
+	}
+	std::cout << "   Please press key [ ] for to select the receiver ";
+	std::cout << "\n >>";
+	std::cin >> tempReceiver;//Выбираем получателя
+	//Поиск  нулой строки и запись в него строки 
+		for (int i = 0; i < maxMess; ++i)
 		{
-			/*std::cout << "\n"[i]  << messagesPtr[i]<<" ";
-			std::cout << messagesPtr[i]->getNumber();
-			std::cout << " " << messagesPtr[i]->getOwn()<<"->";
-			std::cout << " " << messagesPtr[i]->getReceiver();
-			std::cout << "\n" << messagesPtr[i]->getMessage()<<">>"*/;	
-		}
-		std::cin >> temp;
+			if (messagesPtr[i]->getOwn() == Null)
+			{
+				messagesPtr[i]->setOwn(personsPtr[curSesion]->getLog());
+				messagesPtr[i]->setReceiver(personsPtr[tempReceiver]->getLog());
+				std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
+				std::cout << ">> ";
+				std::cin >> tempMessage;//вводим сообщения
+				messagesPtr[i]->setMessage(tempMessage);
+				break;
+			}
+		}	
 }
 
 
@@ -50,11 +65,8 @@ void createLogPass()
 			std::cout << report;
 		}
 		countObject++;
-//	} while (choice == 'y' && maxPerson > countObject);//выходим из создания обьектов если дошли на границу массива
-
-//	for (int i = 0; i < countObject; ++i) { delete personsPtr[i]; }//освобрждаем память от обьектов
-
 }
+
 void showLogPass()
 {
 	for (int i = 0; i < countObject; ++i)
@@ -64,6 +76,7 @@ void showLogPass()
 		std::cout << "personsPtr[i]->getPass()"[i] << ">> " << personsPtr[i]->getPass() << std::endl;
 	}
 }
+
 void startSession()
 {
 	std::string strinForTest;
@@ -72,6 +85,7 @@ void startSession()
 
 	std::cin >> strinForTest;
 }
+
 void deleteLogPass()
 {
 	std::cout << "deleteLogPass" << std::endl;

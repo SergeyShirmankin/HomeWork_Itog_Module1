@@ -26,7 +26,7 @@ std::string Messages::getReceiver()
 
 std::string Messages::getMessage()
 {
-	return this->receiver;
+	return this->message;
 }
 
 Messages* Messages::getPtrMess()
@@ -44,7 +44,7 @@ void Messages::setReceiver(std::string _received)
 	this->receiver = _received;
 }
 
-void Messages::getMessage(std::string _message)
+void Messages::setMessage(std::string _message)
 {
 	this->message = _message;
 }
