@@ -25,7 +25,7 @@ int main()
 		if	(enterLogPass())
 		{
 			createNullMess();
-			startSession();
+		//	startSession();
 		}
 			break;
 		case's':

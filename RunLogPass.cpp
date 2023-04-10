@@ -28,31 +28,53 @@ void showMessages()
 {
 	int tempReceiver;
 	std::string tempMessage;
+	char key;
 	system("cls");
-	std::cout << "Online users >> ";
-	for (int i = 0; i < countObject; ++i)
+	while (true)
 	{
-		std::cout << personsPtr[i]->getLog()<<"["<<i<<"], ";	
-	}
-	std::cout << "   Please press key [ ] for to select the receiver ";
-	std::cout << "\n >>";
-	std::cin >> tempReceiver;//Выбираем получателя
-	//Поиск  нулой строки и запись в него строки 
-		for (int i = 0; i < maxMess; ++i)
-		{
-			if (messagesPtr[i]->getOwn() == Null)
+		std::cout << "For exit to press key q to continue press any key";
+		std::cout << "\n>> ";
+		std::cin >> key;
+		if (key == 'q') { break; }
+		else {
+			system("cls");
+			std::cout << "Start Session[" << curSesion << "]:\n";
+			std::cout << "Hello " << personsPtr[curSesion]->getLog() << "\n";
+			std::cout << "Online users: ";
+			for (int i = 0; i < countObject; ++i)
 			{
-				messagesPtr[i]->setOwn(personsPtr[curSesion]->getLog());
-				messagesPtr[i]->setReceiver(personsPtr[tempReceiver]->getLog());
-				std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
-				std::cout << ">> ";
-				std::cin >> tempMessage;//вводим сообщения
-				messagesPtr[i]->setMessage(tempMessage);
-				break;
+				std::cout << personsPtr[i]->getLog() << "[" << i << "], ";
 			}
-		}	
-}
+			std::cout << "\nPlease press key [ ] for to select the receiver ";
+			std::cout << "\n>> ";
+			std::cin >> tempReceiver;//Выбираем получателя
+			//Поиск  нулой строки и запись в него строки 
+			for (int i = 0; i < maxMess; ++i)
+			{
+				if (Null.compare(messagesPtr[i]->getOwn()))
+				{
+					std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
+					std::cout << ">> " << messagesPtr[i]->getMessage();
+					break;
+				}
+			}
+			for (int i = 0; i < maxMess; ++i)
+			{
+				if (messagesPtr[i]->getOwn() == Null)
+				{
+					messagesPtr[i]->setOwn(personsPtr[curSesion]->getLog());
+					messagesPtr[i]->setReceiver(personsPtr[tempReceiver]->getLog());
+					std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
+					std::cout << ">> ";
+					std::cin >> tempMessage;//вводим сообщения
+					messagesPtr[i]->setMessage(tempMessage);
+					break;
+				}
+			}
 
+		}
+	}
+}
 
 void createLogPass()
 {
@@ -81,7 +103,7 @@ void startSession()
 {
 	std::string strinForTest;
 	std::cout << "Start Session["<< curSesion<<"]:\n";
-	std::cout << "Hello " << personsPtr[curSesion]->getLog() << "  >> ";
+	std::cout << "Hello " << personsPtr[curSesion]->getLog() << ">> ";
 
 	std::cin >> strinForTest;
 }
@@ -102,10 +124,10 @@ bool enterLogPass()
 	std::string _password;
 	std::string _login;
 	std::cout << "Enter login\n";
-	std::cout << ">>";
+	std::cout << ">> ";
 	std::cin >> _login;
 	std::cout << "Enter password\n";
-	std::cout << ">>";
+	std::cout << ">> ";
 	std::cin >> _password;
 	for (int i = 0; i < countObject; ++i)
 	{
