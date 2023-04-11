@@ -6,6 +6,7 @@
 static Log_pass* personsPtr[maxPerson];//указатель на элементы массива Пользователей
 static Messages* messagesPtr[maxMess];//указатель на элементы массива Сообщений
 const std::string Null = "Null";
+std::string currUser = "Null";
 
 									  
 void createNullMess()//Создаем массив пустых сообщений с номерами
@@ -26,6 +27,7 @@ for (int i = 0; i < maxMess; ++i) {
 
 void showMessages()
 {
+	int resultCompFindUser;
 	int tempReceiver;
 	std::string tempMessage;
 	char key;
@@ -40,6 +42,7 @@ void showMessages()
 			system("cls");
 			std::cout << "Start Session[" << curSesion << "]:\n";
 			std::cout << "Hello " << personsPtr[curSesion]->getLog() << "\n";
+			currUser = personsPtr[curSesion]->getLog();
 			std::cout << "Online users: ";
 			for (int i = 0; i < countObject; ++i)
 			{
@@ -48,16 +51,17 @@ void showMessages()
 			std::cout << "\nPlease press key [ ] for to select the receiver ";
 			std::cout << "\n>> ";
 			std::cin >> tempReceiver;//Выбираем получателя
-			//Поиск  нулой строки и запись в него строки 
+			// Поиск и вывод строк
 			for (int i = 0; i < maxMess; ++i)
 			{
-				if (Null.compare(messagesPtr[i]->getOwn()))
+				resultCompFindUser=currUser.compare(messagesPtr[i]->getOwn());
+				if (resultCompFindUser==0)
 				{
 					std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
 					std::cout << ">> " << messagesPtr[i]->getMessage();
-					break;
 				}
 			}
+			//Поиск  нулой строки и запись в него строки 
 			for (int i = 0; i < maxMess; ++i)
 			{
 				if (messagesPtr[i]->getOwn() == Null)
