@@ -135,14 +135,12 @@ bool enterLogPass()
 		int resultPass = _password.compare(personsPtr[i]->getPass());
 		if (resultLog == 0 && resultPass == 0) 
 		{
-			/*std::cout <<"Hello "<<personsPtr[i]->getLog() << "  >> \n";*/
 			curSesion = i;
+			resultCompare = true;
 			return true;
 		}
-		else
-		{
-			std::cout << "Not access = "<<i<<std::endl;
-			return false;
-		}
 	}
+		std::cout << "Not access.\n ";
+		return false;
+
 }
