@@ -22,7 +22,6 @@ for (int i = 0; i < maxMess; ++i) {
 			std::cout << report;
 		}
     }
-       showMessages(); 
 }
 
 void showMessages()
@@ -30,6 +29,7 @@ void showMessages()
 	int resultCompFindUser;
 	int tempReceiver;
 	std::string tempMessage;
+	std::string tempCin;
 	char key;
 	system("cls");
 	while (true)
@@ -61,7 +61,7 @@ void showMessages()
 					std::cout << ">> " << messagesPtr[i]->getMessage();
 				}
 			}
-			//Поиск  нулой строки и запись в него строки 
+			//Поиск  нулeвой строки и запись в него строки 
 			for (int i = 0; i < maxMess; ++i)
 			{
 				if (messagesPtr[i]->getOwn() == Null)
@@ -70,8 +70,9 @@ void showMessages()
 					messagesPtr[i]->setReceiver(personsPtr[tempReceiver]->getLog());
 					std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
 					std::cout << ">> ";
-					std::cin >> tempMessage;//вводим сообщения
-					messagesPtr[i]->setMessage(tempMessage);
+					std::getline(std::cin>> tempCin, tempMessage);//забираем всю строку
+					tempMessage = tempCin+" "+tempMessage;
+					messagesPtr[i]->setMessage(tempMessage.substr(0, tempMessage.size()));
 					break;
 				}
 			}

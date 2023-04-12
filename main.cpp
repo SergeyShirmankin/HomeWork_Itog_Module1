@@ -7,6 +7,7 @@ int main()
 	countMessage = 0;//порядковый номер сообщения
 	char op;//запись символа операции
 	setlocale(LC_ALL, "");//кирилица
+	createNullMess();//создаем пустой массив сообщений 
 	while (true) {
 		std::cout << "Press key:'q'-quit, 'n'-create , 'd'-delete , 'e'-enter , 's'- show\n";
 		std::cout << ">> ";
@@ -24,8 +25,8 @@ int main()
 		case'e':
 		if	(enterLogPass())
 		{
-			createNullMess();
-		//	startSession();
+			setlocale(LC_ALL, "");//кирилица
+			showMessages();
 		}
 			break;
 		case's':
