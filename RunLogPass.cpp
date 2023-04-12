@@ -27,6 +27,7 @@ for (int i = 0; i < maxMess; ++i) {
 void showMessages()
 {
 	int resultCompFindUser;
+	int resultCompFindReceiver;
 	int tempReceiver;
 	std::string tempMessage;
 	std::string tempCin;
@@ -40,14 +41,14 @@ void showMessages()
 		if (key == 'q') { break; }
 		else {
 			system("cls");
-			std::cout << "Start Session[" << curSesion << "]:\n";
-			std::cout << "Hello " << personsPtr[curSesion]->getLog() << "\n";
-			currUser = personsPtr[curSesion]->getLog();
 			std::cout << "Online users: ";
 			for (int i = 0; i < countObject; ++i)
 			{
 				std::cout << personsPtr[i]->getLog() << "[" << i << "], ";
 			}
+			std::cout << "\nStart Session[" << curSesion << "]:\n";
+			std::cout << "Hello " << personsPtr[curSesion]->getLog() << "\n";
+			currUser = personsPtr[curSesion]->getLog();
 			std::cout << "\nPlease press key [ ] for to select the receiver ";
 			std::cout << "\n>> ";
 			std::cin >> tempReceiver;//Выбираем получателя
@@ -56,6 +57,12 @@ void showMessages()
 			{
 				resultCompFindUser=currUser.compare(messagesPtr[i]->getOwn());
 				if (resultCompFindUser==0)
+				{
+					std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
+					std::cout << ">> " << messagesPtr[i]->getMessage();
+				}
+				resultCompFindReceiver= currUser.compare(messagesPtr[i]->getReceiver());
+				if (resultCompFindReceiver == 0)
 				{
 					std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
 					std::cout << ">> " << messagesPtr[i]->getMessage();
