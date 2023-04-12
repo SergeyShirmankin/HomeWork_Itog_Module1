@@ -12,20 +12,21 @@ int main()
 	SetConsoleOutputCP(1251);
 	createNullMess();//создаем пустой массив сообщений 
 	while (true) {
-		std::cout << "Press key:'q'-quit, 'n'-create , 'd'-delete , 'e'-enter , 's'- show\n";
+	//	std::cout << "Press key:'q'-quit, 'n'-create , 'd'-delete , 'e'-enter , 's'- show\n";
+		std::cout << "Выберите опцию:'в'-Выход, 'н'-Создать нового пользователя , 'л'-Войти под лог. и паролем\n";
 		std::cout << ">> ";
 		std::cin >> op;//
-		if (op == 'q') {
+		if (op == 'в') {
 			exit(0);
 		}
 		switch (op) {
-		case'n':
+		case'н':
 			createLogPass();
 			break;
 		case'd':
 			deleteLogPass();
 			break;
-		case'e':
+		case'л':
 		if	(enterLogPass())
 		{
 			setlocale(LC_ALL, "");//кирилица

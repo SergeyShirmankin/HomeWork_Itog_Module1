@@ -35,10 +35,11 @@ void showMessages()
 	system("cls");
 	while (true)
 	{
-		std::cout << "For exit to press key q to continue press any key";
+	//	std::cout << "For exit to press key q to continue press any key";
+		std::cout << "Для выхода нажмите клавишу 'в' для продолжения нажмите любую кл и ent";
 		std::cout << "\n>> ";
 		std::cin >> key;
-		if (key == 'q') { break; }
+		if (key == 'в') { break; }
 		else {
 			system("cls");
 			std::cout << "Online users: ";
@@ -49,9 +50,7 @@ void showMessages()
 			std::cout << "\nStart Session[" << curSesion << "]:\n";
 			std::cout << "Hello " << personsPtr[curSesion]->getLog() << "\n";
 			currUser = personsPtr[curSesion]->getLog();
-			std::cout << "\nPlease press key [ ] for to select the receiver ";
-			std::cout << "\n>> ";
-			std::cin >> tempReceiver;//Выбираем получателя
+
 			// Поиск и вывод строк
 			for (int i = 0; i < maxMess; ++i)
 			{
@@ -68,6 +67,10 @@ void showMessages()
 					std::cout << ">> " << messagesPtr[i]->getMessage();
 				}
 			}
+			//std::cout << "\nPlease press key [ ] for to select the receiver ";
+			std::cout << "\nВыберите цифру получателя сообщения ";
+			std::cout << "\n>> ";
+			std::cin >> tempReceiver;//Выбираем получателя
 			//Поиск  нулeвой строки и запись в него строки 
 			for (int i = 0; i < maxMess; ++i)
 			{
@@ -79,7 +82,8 @@ void showMessages()
 					std::cout << ">> ";
 					std::getline(std::cin>> tempCin, tempMessage);//забираем всю строку
 					tempMessage = tempCin+" "+tempMessage;
-					messagesPtr[i]->setMessage(tempMessage.substr(0, tempMessage.size()));
+					if (tempMessage.size() == 0) { break; }
+					messagesPtr[i]->setMessage(tempMessage);
 					break;
 				}
 			}
@@ -135,10 +139,10 @@ bool enterLogPass()
 	bool resultCompare = false;
 	std::string _password;
 	std::string _login;
-	std::cout << "Enter login\n";
+	std::cout << "Введите логин\n";
 	std::cout << ">> ";
 	std::cin >> _login;
-	std::cout << "Enter password\n";
+	std::cout << "Введите пароль\n";
 	std::cout << ">> ";
 	std::cin >> _password;
 	for (int i = 0; i < countObject; ++i)
