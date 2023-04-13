@@ -24,11 +24,12 @@ for (int i = 0; i < maxMess; ++i) {
     }
 }
 
-void showMessages()
+int showMessages()
 {
 	int resultCompFindUser;
 	int resultCompFindReceiver;
-	int tempReceiver;
+	int convIngTempRec;
+	std::string tempReceiver;
 	std::string tempMessage;
 	std::string tempCin;
 	char key;
@@ -72,21 +73,34 @@ void showMessages()
 			std::cout << "\n>> ";
 			std::cin >> tempReceiver;//Выбираем получателя
 			//Поиск  нулeвой строки и запись в него строки 
-			for (int i = 0; i < maxMess; ++i)
+			//if (0 <= tempReceiver && tempReceiver <= maxPerson) {
+			if (tempReceiver.size() == 0) { break; }//защита от пустой строки
+			try
 			{
-				if (messagesPtr[i]->getOwn() == Null)
-				{
-					messagesPtr[i]->setOwn(personsPtr[curSesion]->getLog());
-					messagesPtr[i]->setReceiver(personsPtr[tempReceiver]->getLog());
-					std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
-					std::cout << ">> ";
-					std::getline(std::cin>> tempCin, tempMessage);//забираем всю строку
-					tempMessage = tempCin+" "+tempMessage;
-					if (tempMessage.size() == 0) { break; }
-					messagesPtr[i]->setMessage(tempMessage);
-					break;
-				}
+				convIngTempRec = stoi(tempReceiver);//проверка на правильность приведения string в int
 			}
+			catch(std::invalid_argument e) {
+				std::cout << "\nВнимание, некорекный ввод\n";
+				return 1;
+			}
+		  if (0 <= convIngTempRec && convIngTempRec <= maxPerson) {
+			  for (int i = 0; i < maxMess; ++i)
+			  {
+				  if (messagesPtr[i]->getOwn() == Null)
+				  {
+					  messagesPtr[i]->setOwn(personsPtr[curSesion]->getLog());
+					  messagesPtr[i]->setReceiver(personsPtr[convIngTempRec]->getLog());
+					  std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
+					  std::cout << ">> ";
+					  std::getline(std::cin >> tempCin, tempMessage);//забираем всю строку
+					  tempMessage = tempCin + " " + tempMessage;
+					  if (tempMessage.size() == 0) { break; }
+					  messagesPtr[i]->setMessage(tempMessage);
+					  break;
+				  
+			  }
+		  }
+			 }
 
 		}
 	}
