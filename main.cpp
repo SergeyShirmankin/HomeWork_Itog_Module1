@@ -7,7 +7,6 @@ int main()
 	countObject = 0; // количество созданых обьектов или количество элементов в массиве
 	countMessage = 0;//порядковый номер сообщения
 	char op;//запись символа операции
-	//setlocale(LC_ALL, "Russian");//кирилица
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	createNullMess();//создаем пустой массив сообщений 

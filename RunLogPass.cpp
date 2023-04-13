@@ -36,7 +36,6 @@ int showMessages()
 	system("cls");
 	while (true)
 	{
-	//	std::cout << "For exit to press key q to continue press any key";
 		std::cout << "Для выхода нажмите клавишу 'в' для продолжения нажмите любую кл и ent";
 		std::cout << "\n>> ";
 		std::cin >> key;
@@ -68,12 +67,10 @@ int showMessages()
 					std::cout << ">> " << messagesPtr[i]->getMessage();
 				}
 			}
-			//std::cout << "\nPlease press key [ ] for to select the receiver ";
 			std::cout << "\nВыберите цифру получателя сообщения ";
 			std::cout << "\n>> ";
 			std::cin >> tempReceiver;//Выбираем получателя
 			//Поиск  нулeвой строки и запись в него строки 
-			//if (0 <= tempReceiver && tempReceiver <= maxPerson) {
 			if (tempReceiver.size() == 0) { break; }//защита от пустой строки
 			try
 			{
@@ -129,14 +126,6 @@ void showLogPass()
 	}
 }
 
-void startSession()
-{
-	std::string strinForTest;
-	std::cout << "Start Session["<< curSesion<<"]:\n";
-	std::cout << "Hello " << personsPtr[curSesion]->getLog() << ">> ";
-
-	std::cin >> strinForTest;
-}
 
 void deleteLogPass()
 {

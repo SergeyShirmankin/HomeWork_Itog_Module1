@@ -8,6 +8,5 @@ void createLogPass();
 void deleteLogPass();
 bool enterLogPass();
 void showLogPass();
-void startSession();
 void createNullMess();
 int showMessages();
