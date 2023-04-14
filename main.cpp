@@ -28,14 +28,17 @@ int main()
 		case'л':
 		if	(enterLogPass())
 		{
-			setlocale(LC_ALL, "");//кирилица
+			//setlocale(LC_ALL, "");//кирилица
 			showMessages();
 		}
 			break;
 		case's':
 			showLogPass();
 			break;
+		defalt:
+			std::cout << "Ќеправильно выбрали букву";
 		}
+	
 		//	for (int i = 0; i < countObject; ++i) { delete personsPtr[i]; }//освобрждаем пам€ть от обьектов
 	}
 	return 0;

@@ -36,7 +36,7 @@ int showMessages()
 	system("cls");
 	while (true)
 	{
-		std::cout << "Для выхода нажмите клавишу 'в' для продолжения нажмите любую кл и ent";
+		std::cout << "\nДля выхода нажмите клавишу 'в' для продолжения нажмите любую кл и ent";
 		std::cout << "\n>> ";
 		std::cin >> key;
 		if (key == 'в') { break; }
@@ -54,20 +54,20 @@ int showMessages()
 			// Поиск и вывод строк
 			for (int i = 0; i < maxMess; ++i)
 			{
-				resultCompFindUser=currUser.compare(messagesPtr[i]->getOwn());
-				if (resultCompFindUser==0)
+				resultCompFindUser = currUser.compare(messagesPtr[i]->getOwn());
+				if (resultCompFindUser == 0)
 				{
 					std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
 					std::cout << ">> " << messagesPtr[i]->getMessage();
 				}
-				resultCompFindReceiver= currUser.compare(messagesPtr[i]->getReceiver());
+				resultCompFindReceiver = currUser.compare(messagesPtr[i]->getReceiver());
 				if (resultCompFindReceiver == 0)
 				{
 					std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
 					std::cout << ">> " << messagesPtr[i]->getMessage();
 				}
 			}
-			std::cout << "\nВыберите цифру получателя сообщения ";
+			std::cout << "\nВыберите цифру получателя сообщения, для всеобщей рассылки выберите[9] ";
 			std::cout << "\n>> ";
 			std::cin >> tempReceiver;//Выбираем получателя
 			//Поиск  нулeвой строки и запись в него строки 
@@ -76,29 +76,55 @@ int showMessages()
 			{
 				convIngTempRec = stoi(tempReceiver);//проверка на правильность приведения string в int
 			}
-			catch(std::invalid_argument e) {
+			catch (std::invalid_argument e) {
 				std::cout << "\nВнимание, некорекный ввод\n";
 				return 1;
 			}
-		  if (0 <= convIngTempRec && convIngTempRec <= maxPerson) {
-			  for (int i = 0; i < maxMess; ++i)
-			  {
-				  if (messagesPtr[i]->getOwn() == Null)
-				  {
-					  messagesPtr[i]->setOwn(personsPtr[curSesion]->getLog());
-					  messagesPtr[i]->setReceiver(personsPtr[convIngTempRec]->getLog());
-					  std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
-					  std::cout << ">> ";
-					  std::getline(std::cin >> tempCin, tempMessage);//забираем всю строку
-					  tempMessage = tempCin + " " + tempMessage;
-					  if (tempMessage.size() == 0) { break; }
-					  messagesPtr[i]->setMessage(tempMessage);
-					  break;
-				  
-			  }
-		  }
-			 }
+			if (0 <= convIngTempRec && convIngTempRec <= maxPerson) {
+				for (int i = 0; i < maxMess; ++i)
+				{
+					if (messagesPtr[i]->getOwn() == Null)
+					{
+						messagesPtr[i]->setOwn(personsPtr[curSesion]->getLog());
+						messagesPtr[i]->setReceiver(personsPtr[convIngTempRec]->getLog());
+						std::cout << "\n" << messagesPtr[i]->getOwn() << "->" << messagesPtr[i]->getReceiver();
+						std::cout << ">> ";
+						std::getline(std::cin >> tempCin, tempMessage);//забираем всю строку
+						tempMessage = tempCin + " " + tempMessage;
+						if (tempMessage.size() == 0) { break; }
+						messagesPtr[i]->setMessage(tempMessage);
+						break;
 
+					}
+				}
+			}
+			//запись для всеъх пользователей
+			if (convIngTempRec == 9) {
+				for (int iMess = 0; iMess < maxMess; ++iMess)
+				{
+					if (messagesPtr[iMess]->getOwn() == Null)
+					{
+						std::cout << "Введите сообщение:\n";
+						std::cout << ">> ";
+						std::getline(std::cin >> tempCin, tempMessage);//забираем всю строку
+						tempMessage = tempCin + " " + tempMessage;
+						if (tempMessage.size() == 0) { break; }
+						for (int i = 0; i < countObject; ++i)
+						{
+							if (curSesion != i) 
+							{
+								messagesPtr[iMess]->setMessage(tempMessage);
+								messagesPtr[iMess]->setOwn(personsPtr[curSesion]->getLog());
+								messagesPtr[iMess]->setReceiver(personsPtr[i]->getLog());
+								std::cout << "\n" << messagesPtr[iMess]->getOwn() << "->" << messagesPtr[iMess]->getReceiver() << ": " << messagesPtr[iMess]->getMessage();
+							}
+						   }
+						break;
+					}
+
+
+				}
+			}
 		}
 	}
 }
