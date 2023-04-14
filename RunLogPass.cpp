@@ -104,25 +104,24 @@ int showMessages()
 				{
 					if (messagesPtr[iMess]->getOwn() == Null)
 					{
-						std::cout << "¬ведите сообщение:\n";
+						std::cout << "\n¬ведите сообщение:\n";
 						std::cout << ">> ";
 						std::getline(std::cin >> tempCin, tempMessage);//забираем всю строку
 						tempMessage = tempCin + " " + tempMessage;
 						if (tempMessage.size() == 0) { break; }
 						for (int i = 0; i < countObject; ++i)
 						{
-							if (curSesion != i) 
+							if (curSesion != i)
 							{
 								messagesPtr[iMess]->setMessage(tempMessage);
 								messagesPtr[iMess]->setOwn(personsPtr[curSesion]->getLog());
 								messagesPtr[iMess]->setReceiver(personsPtr[i]->getLog());
 								std::cout << "\n" << messagesPtr[iMess]->getOwn() << "->" << messagesPtr[iMess]->getReceiver() << ": " << messagesPtr[iMess]->getMessage();
+								if (iMess < maxMess) { ++iMess; }
 							}
-						   }
-						break;
-					}
-
-
+						}
+					} 
+					if (messagesPtr[iMess]->getOwn() == Null) { break; }
 				}
 			}
 		}
