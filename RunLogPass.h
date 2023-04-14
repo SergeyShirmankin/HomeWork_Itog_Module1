@@ -10,3 +10,4 @@ bool enterLogPass();
 void showLogPass();
 void createNullMess();
 int showMessages();
+void deleteMess();

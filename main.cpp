@@ -23,6 +23,8 @@ int main()
 			op = &chars[0];
 	
 			if (*op == 'â') {
+				deleteLogPass();
+				deleteMess();
 				exit(0);
 			}
 			switch (*op) {

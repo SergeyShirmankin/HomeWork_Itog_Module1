@@ -128,6 +128,15 @@ int showMessages()
 	}
 }
 
+void deleteMess()
+{
+	std::cout << "\n Удаляем сообщение";
+	for (int i = 0; i < maxMess; ++i) 
+	{
+		delete messagesPtr[i];
+	}
+}
+
 void createLogPass()
 {
 		try {
@@ -154,7 +163,11 @@ void showLogPass()
 
 void deleteLogPass()
 {
-	std::cout << "deleteLogPass" << std::endl;
+	std::cout << "Удаляем обьектов логина и паролей" << std::endl;
+	for (int i = 0; i < countObject; ++i)
+	{
+		delete personsPtr[i];
+	}
 }
 
 bool enterLogPass1()
