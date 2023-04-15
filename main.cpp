@@ -46,9 +46,7 @@ int main()
 				break;
 			defalt:
 				std::cout << "Неправильно выбрали букву";
-			}
-
-			//	for (int i = 0; i < countObject; ++i) { delete personsPtr[i]; }//освобрждаем память от обьектов
+			}		
 		}
 	}
 	return 0;
