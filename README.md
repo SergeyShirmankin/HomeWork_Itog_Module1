@@ -1,5 +1,5 @@
-What is Notepad++ ?
-===================
+Итоговая домашняя работа по модулю 1
+====================================
 
 Notepad++ is a free (free as in both "free speech" and "free beer") source code
 editor and Notepad replacement that supports several programming languages and
